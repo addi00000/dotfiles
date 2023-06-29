@@ -1,0 +1,80 @@
+{
+  "layer": "top",
+  "margin-right": 5,
+  "margin-left": 5,
+  "margin-top": 5,
+  "modules-left": [
+    "custom/launcher",
+    "cpu",
+    "memory",
+    "tray"
+  ],
+  "modules-center": [
+    "wlr/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "clock",
+    "custom/power"
+  ],
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-muted": "{icon} {volume}%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{: %I:%M %p   %d/%m/%Y}"
+  },
+  "cpu": {
+    "interval": 15,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "wlr/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "sort-by-number": true,
+    "format-icons": {
+      "1": "1  ",
+      "2": "2  ",
+      "3": "3  ",
+      "4": "4  ",
+      "5": "5  ",
+      "6": "6  ",
+      "7": "7  ",
+      "8": "8  ",
+      "9": "9  ",
+      "10": " 10 "
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "custom/launcher": {
+    "format": " ",
+    "on-click": "~/.config/hypr/scripts/menu",
+    "on-click-right": "~/.config/hypr/scripts/menu"
+  },
+  "custom/power": {
+    "format": " ",
+    "on-click": "sh -c '(sleep 0.5s; sh ~/.config/rofi/bin/powermenu)' & disown"
+  }
+}
